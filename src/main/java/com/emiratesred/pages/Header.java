@@ -16,16 +16,18 @@ public class Header {
     private final By results = By.id("product");
 
     private final WebDriverWait wait;
-    private By noResultFound    = By.id("searchsuite-autocomplete");
+    private By noResultFound = By.id("searchsuite-autocomplete");
 
-    public Header(WebDriver driver){
+    public Header(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
-    public void search(String text){
+
+    public void search(String text) {
         this.driver.findElement(searchField).sendKeys(text);
     }
-    public List<WebElement> getResults(){
+
+    public List<WebElement> getResults() {
         WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(results));
         return result.findElements(By.tagName("li"));
     }

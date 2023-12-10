@@ -19,22 +19,24 @@ public class HomePage {
         this.driver = driver;
         this.header = new Header(driver);
     }
-   public Header getHeader(){
+
+    public Header getHeader() {
         return this.header;
-   }
+    }
 
     public HomePage goTo() {
         this.driver.get("https://www.emiratesred.com");
         return this;
     }
 
-    public HomePage closeNotification(){
+    public HomePage closeNotification() {
         this.driver.findElement(closeNotification).click();
         return this;
     }
-    public HomePage acceptPrivacy(){
+
+    public HomePage acceptPrivacy() {
         List<WebElement> accept = this.driver.findElements(acceptPrivacy);
-        if(!accept.isEmpty()){
+        if (!accept.isEmpty()) {
             accept.get(0).click();
         }
         return this;
