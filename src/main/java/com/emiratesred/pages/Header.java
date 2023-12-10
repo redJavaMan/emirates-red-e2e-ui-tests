@@ -14,7 +14,9 @@ public class Header {
     private final By searchField = By.cssSelector("#search");
 
     private final By results = By.id("product");
+
     private final WebDriverWait wait;
+    private By noResultFound    = By.id("searchsuite-autocomplete");
 
     public Header(WebDriver driver){
         this.driver = driver;
@@ -26,5 +28,9 @@ public class Header {
     public List<WebElement> getResults(){
         WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(results));
         return result.findElements(By.tagName("li"));
+    }
+
+    public List<WebElement> getNoResult() {
+        return this.driver.findElements(noResultFound);
     }
 }

@@ -22,4 +22,10 @@ public class HomePageTest {
         homePage.goTo().closeNotification().acceptPrivacy().getHeader().search("merlin");
         assertFalse(homePage.getHeader().getResults().isEmpty(), "Search did not return any results");
     }
+
+    @Test
+    public void searchProductNoResultTest(){
+        homePage.goTo().getHeader().search("ferrari");
+        assertFalse(homePage.getHeader().getNoResult().isEmpty(), "Result not found not shown");
+    }
 }
