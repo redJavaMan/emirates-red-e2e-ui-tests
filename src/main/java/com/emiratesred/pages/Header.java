@@ -1,12 +1,14 @@
 package com.emiratesred.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Header {
@@ -28,8 +30,12 @@ public class Header {
     }
 
     public List<WebElement> getResults() {
-        WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(results));
-        return result.findElements(By.tagName("li"));
+        try {
+           WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(results));
+            return result.findElements(By.tagName("li"));
+        } catch (TimeoutException e) {
+            return new ArrayList<>();
+        }
     }
 
     public List<WebElement> getNoResult() {
