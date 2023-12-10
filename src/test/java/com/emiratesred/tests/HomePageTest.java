@@ -2,7 +2,7 @@ package com.emiratesred.tests;
 
 import com.emiratesred.pages.HomePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -14,12 +14,12 @@ public class HomePageTest {
 
     @BeforeTest
     public void setup(){
-        WebDriver driver = new EdgeDriver();
+        WebDriver driver = new SafariDriver();
         homePage = new HomePage(driver);
     }
     @Test
     public void searchValidProductTest(){
-        homePage.goTo().getHeader().search("merlin");
+        homePage.goTo().closeNotification().acceptPrivacy().getHeader().search("merlin");
         assertFalse(homePage.getHeader().getResults().isEmpty(), "Search did not return any results");
     }
 }
