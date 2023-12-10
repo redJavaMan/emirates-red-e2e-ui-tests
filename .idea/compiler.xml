@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Emirates_red" />
+        <module name="emirates-red-e2e-ui-tests" />
       </profile>
     </annotationProcessing>
   </component>
