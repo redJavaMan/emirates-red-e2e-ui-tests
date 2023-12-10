@@ -2,6 +2,9 @@ package com.emiratesred.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class HomePage {
 
@@ -30,7 +33,10 @@ public class HomePage {
         return this;
     }
     public HomePage acceptPrivacy(){
-        this.driver.findElement(acceptPrivacy).click();
+        List<WebElement> accept = this.driver.findElements(acceptPrivacy);
+        if(!accept.isEmpty()){
+            accept.get(0).click();
+        }
         return this;
     }
 }
